@@ -87,7 +87,6 @@ extern Doorbell<P> {
   /// Constructor
   Doorbell();
 
-  // returns timer id (tid) or 0 for failure.
   @pure
   void ring(in P port_id);
 }
