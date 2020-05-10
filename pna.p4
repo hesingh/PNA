@@ -19,6 +19,7 @@ limitations under the License.
 #ifndef __PNA_P4__
 #define __PNA_P4__
 
+#include<psa.p4>
 
 #ifndef _PORTABLE_NIC_ARCHITECTURE_P4_
 #define _PORTABLE_NIC_ARCHITECTURE_P4_
@@ -115,10 +116,10 @@ control ProcessTxRing<D, H, M>(
     inout pna_ingress_output_metadata_t ostd);
 
 package PNA_PCI_DRIVER_RX<D, H, M, IH, IM, CI2EM, NM, RESUBM, RECIRCM>(
-    ProcessRxRing<D, H, M> prr,
     IngressParser<IH, IM, RESUBM, RECIRCM> ip,
     Ingress<IH, IM> ig,
-    IngressDeparser<IH, IM, CI2EM, RESUBM, NM> id);
+    IngressDeparser<IH, IM, CI2EM, RESUBM, NM> id,
+    ProcessRxRing<D, H, M> prr);
 
 package PNA_PCI_DRIVER_TX<D, H, M, EH, EM, NM, CI2EM, CE2EM, RECIRCM>(
     ProcessTxRing<D, H, M> prr,
